@@ -1,5 +1,5 @@
 ## Tests
-This directory contains all of the current tests.
+This directory contains all of the current tests. Each test is contained with its own text file. The description of a test contains its name, version, purpose, and directions for completion. There should only be one test per file.
 
 ## Tapping Procedure
 All of the tests indicate to perform the tapping procedure. The tapping procedure is used to be able to effectively line up the data streams from the devices that you are using. This section describes how to correctly perform the tapping procedure:
