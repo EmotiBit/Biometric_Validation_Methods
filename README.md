@@ -1,27 +1,23 @@
-# Biometric_Validation_Methods
-Methods for validating biometric tools
+# Biometric Validation Methods
+Procedures and methodology for validating biometric devices and algorithms.
 
 Welcome to the EmotiBit Biometric Validation Methods repository!
 
-Here, you can find the methods we use for collecting data to validate our biometric algorithms. In addition, you can find data files for every new version of a test that we release as part of a release.
+Here, you can find the tests we use for collecting data to validate our biometric algorithms. In addition, you can find data files for every new version of a test that we release as part of a release. Each test contains the EmotiBit data alongside the ground-truth data (collected from another device) so that different EmotiBit algorithms can be compared to other devices using the same datasets.
 
-The goal is to be able to establish methodologies that work towards standardizing the methods used for scoring the accuracy of algorithms that detect biometric signals. Different conditions (i.e. sitting still, standing, running) can cause problems for algorithms that detect biometric signals, these methodologies are meant to be able to standardize the way we check accuracy in many different scenarios.
+The goal is to be able to establish methodologies that work towards standardizing the methods used for scoring the accuracy of algorithms that detect biometric signals. Different conditions (i.e. sitting still, standing, running) can cause problems for algorithms that detect biometric signals, so these methodologies are meant to be able to standardize the way we check accuracy in many different scenarios.
 
 ## Using the Tests
 This section describes the different things you may want to do with this respository and how they would be accomplished.
 
-### I have a new algorithm - What now?
-It will become a new column in the results table for the tests. (This table is shown in a release whenever a test is added/updated). Using your algorithm, generate scores for how well it performs under the condition of a test when compared to a gold standard for measuring the metric you are intereseted in. Once you have these scores, a new column can be added to the table so that the algorithm's performance is visible. Here is an example of how the [sit_stand_sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0) may look with an additional algorithm added:
+### I want to test a new **algorithm**
+To start, test your algorithm by using the data from a particular test release (ex. [sit_stand_sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)). From there, generate scores for how well it performs on the input test data when compared to a gold standard for measuring the metric you are intereseted in (also provided in the test release). Once you have these scores, a ~~new column can be added to the table~~ (a new place to put the performance data needs to be determined) so that the algorithm's performance is visible. ~~Here is an example of how the [sit_stand_sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0) may look with an additional algorithm added:~~
 
-| Test | Algorithm 1 | [Example] Algorithm 2 |
-| --- | --- | --- |
-| sit-stand-sit_v0.0.0 | <table> <tr> <thead><th>Score</th><th>Plot</th></tr></thead><tbody><tr> <td><table><tr><thead><th>Scores</th><th>Value</th></thead></tr><tbody><tr><td>r</td><td>0.3225</td></tr><tr><td>rho</td><td>0.7197</td></tr><tr><td>tau</td><td>0.5497</td></tr></tbody></table></td> <td><img src="https://github.com/EmotiBit/Biometric_Validation_Methods/assets/70301946/a401e7fd-14ec-4cbc-a976-ad4879c6f004" width=150> </td></tr></tbody> </table>| <table> <tr> <thead><th>Score</th><th>Plot</th></tr></thead><tbody><tr> <td><table><tr><thead><th>Scores</th><th>Value</th></thead></tr><tbody><tr><td>r</td><td>0.123</td></tr><tr><td>rho</td><td>0.456</td></tr><tr><td>tau</td><td>0.789</td></tr></tbody></table></td> <td><img src="https://github.com/EmotiBit/Biometric_Validation_Methods/assets/70301946/a401e7fd-14ec-4cbc-a976-ad4879c6f004" width=150> </td></tr></tbody> </table>|
-
-The release for a test includes the data files that were recorded when that test was created/last updated. If your algorithm is able to detect the metric post-hoc, then you can use these raw data files to calculate your metric. Once the metric has been calculated, use the data file from the gold standard device to compare against and generate scores for the table. This should be done for each test, so that an understanding of how the algorithm performs under many different conditions can be achieved.
+As mentioned before, the release for a test includes the data files that were recorded when that test was created/last updated. If your algorithm is able to detect the metric post-hoc, then you can use these raw data files to calculate your metric. Once the metric has been calculated, use the data file from the gold standard device to compare against and generate scores for the table. This should be done for each test (if possible), so that an understanding of how the algorithm performs under many different conditions can be achieved.
 
 If your algorithm must be run live then you will need to collect new data. When doing so, you will need to also collect data with a gold-standard device so that you can generate scores. These new data files should be included in the new release that is made. Data and scores will need to be collected and calculated for each test, following the test procedure outlined in the file for each test.
 
-### I have a new test
+### I want to add a new **test**
 To demonstrate the procedure for adding a test, we will show an example. The example will be adding a jogging test:
 
 1. Create the test file. A template can be found [here.](./tests/README.md#test-template) Here is our example test:
@@ -41,6 +37,17 @@ To properly version the test, use the [versioning structure.](#versioning-struct
 2. Calculate Metric and Score. Using your collected data and the existing Algorithms for this metric, calculate the metric and calculate the score for that metric against your gold standard measurment.
 2. Create a release with this information. The release should be named the name of the test with its version appended to it. It should include a description and a table showing the results of the test with the algorithms that were used with it. Additionally, the data recorded from running the test should be included as assets for the release. See an example [here.](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)
 
+### I want to add data from a new **device**
+To add data from a new device to an existing test, follow the test procedure while recording data from the EmotiBit and from the new device. Put the files in a directory together named according to the naming convention below so that they can be added to the release for that specific version of the test.
+
+## Naming Convention
+Each test release contains data from the EmotiBit alongside ground-truth data from another device (ex. Cyton). The data files from the test are grouped together in a directory, named as `<test name_<vX.Y.Z>_<device>`. For example, if EmotiBit data was recorded alongside Cyton data following the stand_sit_stand_v0.0.0 test, then the directory containing the data files would be named `sit_stand_sit_v0.0.0_cyton`.
+
+Furthermore, the files in the directory would be named as follows:
+- For the Cyton data: `sit_stand_sit-v0.0.0-cyton.xxx`
+- For the EmotiBit data: `sit_stand_sit-v0.0.0-emotibit.csv`
+
+This ensures that data recorded at the same time on different devices using the same test remains grouped together, while data recorded using the same test but at a different time (such as to record data for a new device) is not accidentally compared with "incompatible" data.
 
 ## Versioning Structure
 
@@ -60,20 +67,19 @@ For more information on the philosophy behind this versioning structure, see [se
 
 The previous section references tests being "compatible" with each other several times. In this section, we define what it means for two test versions to be compatible.
 
-If two tests are compatible it does not mean that the data from these tests is the exact same recording. This means that you cannot necessarily directly compare two recordings and generate a score between them just because their test version is compatible.
+**Important:** If two tests are compatible it does not mean that the data from these tests is the exact same recording. This means that you cannot necessarily directly compare two recordings and generate a score between them just because their test version is compatible since those two recordings are not from the same data session. 
 
-If two tests are compatible it means that if you compare scores between the tests, it is a valid comparison. 
-
-In order to generate a score between two files, they need to explicitly be the same recording, which by definition requires that they were both recorded on the same version.
+In order to generate a score between two files, they need to explicitly be the same recording, which by definition requires that they were both recorded on the same version. If two tests are compatible it means that if you compare scores between the tests, it is a valid comparison. 
 
 For example, if you have the following data:
-- (1) An EmotiBit and a Cyton file recorded with ```v1.2.4```
-- (2) An EmotiBit and aBrainFlow file recorded with ```v1.3.5```
-- (3) An EmotiBit and a Cyton file recorded with ```v2.2.1```
+1. An EmotiBit and a Cyton file recorded with ```v1.2.4```
+2. An EmotiBit and aBrainFlow file recorded with ```v1.3.5```
+3. An EmotiBit and a Cyton file recorded with ```v2.2.1```
+4. An EmotiBit and a aBrainFlow file recorded with ```v2.2.1``` *from a different session than the Cyton file*
 
-The files in (1) can be directly compared with each other and a score can be generated between the two files, as they are the same recording, just on two different devices, the same applies for (2) and (3).
+The files in 1 can be directly compared with each other and a score can be generated between the two files, as they are the same recording, just on two different devices, the same applies for 2, 3, and 4.
 
-In addition, you can compare the score generated in (1) to the score generated in (2), and it will be a valid comparison, but you cannot compare either (1) or (2) to (3).
+In addition, you can compare the score generated in (1) to the score generated in (2), and it will be a valid comparison, but 1 and 2 cannot be compared to either 3 or 4. Furthermore, while the scores from 3 and 4 can be compared, the aBrainFlow file from 4 cannot be directly compared with the Cyton or EmotiBit file from 3.
 
 ## Releases
 
