@@ -11,36 +11,21 @@ The goal is to be able to establish methodologies that work towards standardizin
 This section describes the different things you may want to do with this respository and how they would be accomplished.
 
 ### I want to test a new **algorithm**
-To start, test your algorithm by using the data from a particular test release (ex. [sit_stand_sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)). From there, generate scores for how well it performs on the input test data when compared to a gold standard for measuring the metric you are interested in (also provided in the test release) using the scorer in the EmotiBit_Biometric_Lib [repository](https://github.com/EmotiBit/EmotiBit_Biometric_Lib). In addition, generate a graph comparing the EmotiBit data to the gold standard data so that the algorithm's performance is visible (an example of how to generate the scores and plot is [provided](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/master/py/examples/hr_scorer_example) in the EmotiBit_Biometric_Lib repository).
-
-After having generated scores and the plot, include them in the release documentation for the corresponding test (For example, if a new HR algorithm was tested using sit_stand_sit_v0.0.0, then the [sit_stand_sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0) release should be updated to include the algorithm in the **Performance** section).
+To start, test your algorithm by using the data from a particular test release (ex. [sit_stand_sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)) and device. From there, generate scores for how well it performs on the input test data when compared to a gold standard for measuring the metric you are interested in (also provided in the test release) using the scorer in the EmotiBit_Biometric_Lib [repository](https://github.com/EmotiBit/EmotiBit_Biometric_Lib). In addition, generate a graph comparing the EmotiBit data to the gold standard data so that the algorithm's performance is visible (an example of how to generate the scores and plot is [provided](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/master/py/examples/hr_scorer_example) in the EmotiBit_Biometric_Lib repository). After having generated scores and the plot, include them in the README of your algorithm (refer to this [SPO2 algorithm]() for an example of what formatting should like like).
 
 As mentioned before, the release for a test includes the data files that were recorded when that test was created/last updated. If your algorithm is able to detect the metric post-hoc, then you can use these raw data files to calculate your metric. Once the metric has been calculated, use the data file from the gold standard device to compare against and generate scores for the table. This should be done for each test (if possible), so that an understanding of how the algorithm performs under many different conditions can be achieved.
 
 If your algorithm must be run live then you will need to collect new data. When doing so, you will need to also collect data with a gold-standard device so that you can generate scores. These new data files should be included in the new release that is made. Data and scores will need to be collected and calculated for each test, following the test procedure outlined in the file for each test.
 
-### I want to add a new **test**
-To demonstrate the procedure for adding a test, we will show an example. The example will be adding a jogging test:
+### I want to add a new **procedure**
+A new procedure is added by having the newly created markdown file (containing description, instructions, etc.) added to this repository. Refer to any of the existing tests for examples of what to include in the instructions.
 
-1. Create the test file. A template can be found [here.](./tests/README.md#test-template) Here is our example test:
-```
-Test Name: Jogging 
-Test Version: 1.0.0  
-Test Purpose: Understand how the algorithms perform in noisy conditions such as jogging
-  
-Test Directions:  
-- Complete first part of tapping procedure.  
-- Jog at a constant speed without sudden changes in direction for 5 minutes. 
-- Complete second part of tapping procedure.
-```
 To properly version the test, use the [versioning structure.](#versioning-structure)
 
-2. Collect the data for your test. You will need to use the devices to collect data as outlined in your new testing procedure.
-2. Calculate Metric and Score. Using your collected data and the existing Algorithms for this metric, calculate the metric and calculate the score for that metric against your gold standard measurment.
-2. Create a release with this information. The release should be named the name of the test with its version appended to it. It should include a description and a table showing the results of the test with the algorithms that were used with it. Additionally, the data recorded from running the test should be included as assets for the release. See an example [here.](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)
-
 ### I want to add data from a new **device**
-To add data from a new device to an existing test, follow the test procedure while recording data from the EmotiBit and from the new device. Put the files in a directory together named according to the naming convention below so that they can be added to the release for that specific version of the test.
+To add data from a new device to an existing test, follow the selected test procedure while recording data from the EmotiBit and from the new device. Put the files in a directory together named according to the naming convention below so that they can be added to the release for that specific version of the test.
+
+**Note:** If you have the capability to record 2+ devices at the same time alongside the EmotiBit, it is still recommended to record each device separately 
 
 ## Naming Convention
 Each test release contains data from the EmotiBit alongside ground-truth data from another device (ex. Cyton). The data files from the test are grouped together in a zip file, named as `<test name_<vX.Y.Z>_<device>.zip`. For example, if EmotiBit data was recorded alongside Cyton data following the stand_sit_stand_v0.0.0 test, then the zip containing the data files in the release would be named `sit_stand_sit_v0.0.0_cyton.zip`.
