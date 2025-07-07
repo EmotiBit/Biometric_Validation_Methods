@@ -1,4 +1,4 @@
-# sit-stand-sit_v0.0.0
+# sit-stand-sit_v0.0.1
 Procedure for recording data under the environment of sitting, then standing, then sitting again
 
 ## Procedure
