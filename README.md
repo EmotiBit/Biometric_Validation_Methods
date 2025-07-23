@@ -18,9 +18,31 @@ The following definitions apply to the scope of this repo along with all aspects
 This section describes the different things you may want to do with this respository and how they would be accomplished.
 
 ### I want to test a new **algorithm**
-To start, test your algorithm by using the data from a particular procedure release (ex. [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)) and device. From there, generate scores for how well it performs on the input test data when compared to a gold standard for measuring the metric you are interested in (also provided in the procedure release) using the `scorer.py` in the EmotiBit_Biometric_Lib [repository](https://github.com/EmotiBit/EmotiBit_Biometric_Lib) in the `emotibit` Python module under the `py` directory. In addition, `scorer.py` will generate plots comparing the EmotiBit data to the gold standard data so that the algorithm's performance is visible (an example of how to generate the scores and plots is [provided](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/master/py/examples/scorer_example) in the EmotiBit_Biometric_Lib repository). After having generated scores and the plots, include them in the README of your algorithm as well as putting them in the appropriate subdirectories of the `assets` folder (refer to this [SPO2 algorithm](https://github.com/EmotiBit/brainflow-spo2-algorithm/) for an example of what the repository should look like).
+To start, test your algorithm by using the data from a particular procedure release (ex. [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)) and device. From there, generate scores for how well it performs on the input test data when compared to a gold standard for measuring the metric you are interested in (also provided in the procedure release) using the `scorer.py` in the EmotiBit_Biometric_Lib [repository](https://github.com/EmotiBit/EmotiBit_Biometric_Lib) in the `emotibit` Python module under the `py` directory. In addition, `scorer.py` will generate plots comparing the EmotiBit data to the gold standard data so that the algorithm's performance is visible (an example of how to generate the scores and plots is [provided](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/master/py/examples/scorer_example) in the EmotiBit_Biometric_Lib repository). After having generated scores and the plots, include them in the README of your algorithm as well as putting them in the appropriate subdirectories of the `assets` folder (refer to the directory tree below or this [SPO2 algorithm](https://github.com/EmotiBit/BrainflowSpO2Algorithm) for an example of what the repository should look like).
 
-TODO put ascii tree of repo structure here?
+```
+MyAwesomeAlgorithm/
+├── assets/
+│   └── tests/
+│       └── sit-stand-sit_v0.0.0/
+│           └── <device>/
+│               ├── <device>_scatter.png
+│               ├── <device>_resampled.png
+│               └── <device>_mean-diff.png
+├── src/
+│   ├── MyAwesomeAlgorithm.h
+│   └── MyAwesomeAlgorithm.cpp
+├── pybind/
+│   ├── build/
+│   │   └── ...
+│   ├── venv/
+│   │   └── ...
+│   ├── bindings.cpp
+│   ├── run.py
+│   └── CMakeLists.txt
+├── library.properties
+└── README.md
+```
 
 As mentioned before, the release for a procedure includes the data files that were recorded when that procedure was created/last updated. If your algorithm is able to detect the metric post-hoc, then you can use these raw data files to calculate your metric. Once the metric has been calculated, use the data file from the gold standard device to compare against and generate scores for the table. This should be done for relevant procedures so that an understanding of how the algorithm performs under many different conditions can be achieved.
 
