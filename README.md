@@ -54,11 +54,11 @@ A new procedure is added by having the newly created markdown file (containing d
 To properly version the procedure, use the [versioning structure.](#versioning-structure)
 
 ### I want to add a new **dataset**
-To add data from a new device to an existing test procedure, follow the selected test procedure (as well as an other utility procedures needed for synchronization, etc.) while recording data from the EmotiBit and from the new device. Put the files in a directory together named according to the [naming convention](#naming-convention) below so that they can be added to the release for that specific version of the procedure along with any notes/instructions.
+To add data from a new device to an existing test procedure, follow the selected test procedure (as well as an other utility procedures needed for synchronization, etc.) while recording data from the EmotiBit and from the new device. Put the files in a directory together named following the [naming convention](#naming-convention) below so that they can be added to the release for that specific version of the procedure along with any notes/instructions.
 
 **Note:** If possible, try to include non-parsed data files in the dataset. However, if a non-EmotiBit device requires a specialized program/script to parse the data, then the parsed files can be included in the dataset along with the original data file.
 
-**Note:** If you have the capability to record 3 or more devices at the same time alongside the EmotiBit, it is recommended to create a `.zip` archive for each device-EmotiBit pairing. Refer to the [naming convention](#naming-convention) section below for more details on how to name/organize data files.
+**Note:** If you have the capability to record 3 or more devices at the same time alongside the EmotiBit, it is recommended to create a `.zip` archive for each device-EmotiBit pairing. For example, if you record data from `hr-sensor`, `spo2-sensor`, and from the EmotiBit when following one test procedure, then the `hr-sensor` should have its own archive w/ EmotiBit data, and the `spo2-sensor` should also have its own archive.
 
 ## Synchronization
 When it comes to comparing data between two devices (a third-party and the EmotiBit), proper synchronization is imperative for accurate results. This responsibility mainly rests on whoever is recording new datasets. Different methods for accurate synchronization are mentioned below:
