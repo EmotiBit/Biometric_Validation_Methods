@@ -1,7 +1,7 @@
-# simulated-unobstructed-airway_v0.0.0
-Procedure for recording data under the environment of apnea with an unobstructed airway.
+# hold-breath_v0.0.0
+Procedure for recording data under the environment of apnea with an unobstructed airway (holding breath).
 
-⚠️ **THIS PROCEDURE INVOLVES PURPOSEFUL APNEA. IF YOU START TO FEEL LIGHTHEADED OR SpO2 DROPS BELOW 80%, PLEASE DISCONTINUE THE PROCEDURE** ⚠️
+⚠️ **THIS PROCEDURE INVOLVES PURPOSEFUL APNEA. IF YOU START TO FEEL LIGHTHEADED OR SpO2 DROPS BELOW 90%, PLEASE DISCONTINUE THE PROCEDURE** ⚠️
 
 ## Procedure
 1) Sit with back straight
