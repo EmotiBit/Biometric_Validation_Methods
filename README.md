@@ -20,17 +20,17 @@ The following definitions apply to the scope of this repo along with all aspects
 This section describes the different things you may want to do with this respository and how they would be accomplished.
 
 ### I want to test a new **algorithm**
-To start, test your algorithm by using the data from a particular test procedure release (ex. [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)) and device. From there, generate scores for how well it performs on the EmotiBit data when compared to a third-party "ground-truth" device (also provided in the procedure release) using `scorer.py` in the EmotiBit_Biometric_Lib [repository](https://github.com/EmotiBit/EmotiBit_Biometric_Lib) in the `emotibit` Python module under the `py` directory. In addition, `scorer.py` will generate plots comparing the EmotiBit data to the ground-truth data so that the algorithm's performance is visible (an example of how to generate the scores and plots is [provided](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/master/py/examples/scorer_example) in the EmotiBit_Biometric_Lib repository). After having generated scores and the plots, include them in the README of your algorithm as well as putting them in the appropriate subdirectories of the `assets` folder (refer to the directory tree below or this [SPO2 algorithm](https://github.com/EmotiBit/BrainflowSpO2Algorithm) for an example of what the repository should look like).
+To start, test your algorithm by using the data from a particular test procedure release (ex. [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)) and device. From there, generate scores for how well it performs on the EmotiBit data when compared to a third-party "ground-truth" device (also provided in the procedure release) using `scorer.py` in the EmotiBit_Biometric_Lib [repository](https://github.com/EmotiBit/EmotiBit_Biometric_Lib) in the `emotibit` Python module under the `py` directory. In addition, `scorer.py` will generate plots comparing the EmotiBit data to the ground-truth data so that the algorithm's performance is visible (an example of how to generate the scores and plots is [provided](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/master/py/examples/scorer_example) in the EmotiBit_Biometric_Lib repository). After having generated scores and the plots, include them in the README of your algorithm as well as putting them in the appropriate subdirectories of the `assets` folder (refer to the directory tree below or this [SPO2 algorithm](https://github.com/EmotiBit/EmotiBit_Brainflow_SpO2_Algorithm) for an example of what the repository should look like).
 
 ```
 MyAwesomeAlgorithm/
-├── assets/
-│   └── tests/
-│       └── sit-stand-sit_v0.0.0/
-│           └── <device>/
-│               ├── <device>_scatter.png
-│               ├── <device>_resampled.png
-│               └── <device>_mean-diff.png
+├── tests/
+│   └── sit-stand-sit_v0.0.0/
+│       └── <device>/
+│           ├── <device>_scatter.png
+│           ├── <device>_resampled.png
+│           ├── <device>_mean-diff.png
+│           └── ...
 ├── src/
 │   ├── MyAwesomeAlgorithm.h
 │   └── MyAwesomeAlgorithm.cpp
@@ -46,7 +46,7 @@ MyAwesomeAlgorithm/
 └── README.md
 ```
 
-As mentioned before, the release for a test procedure includes the data files that were recorded when that test was created/last updated. If your algorithm is able to detect the metric post-hoc, then you can use these raw data files to calculate your metric. Once the metric has been calculated, use the data file from the ground truth device to compare against and generate performance metrics (plots and scores) for the algorithm. This should be done for relevant procedures so that an understanding of how the algorithm performs under many different conditions can be achieved.
+As mentioned before, the release for a test procedure includes the data files that were recorded when that test was created/last updated. If your algorithm is able to detect the metric post-hoc, then you can use these raw data files to calculate your metric (instructions on how to accomplish this are in the [Running Algorithm on PC](#running-algorithm-on-pc) section). Once the metric has been calculated, use the data file from the ground truth device to compare against and generate performance metrics (plots and scores) for the algorithm. This should be done for relevant procedures so that an understanding of how the algorithm performs under many different conditions can be achieved.
 
 If your algorithm must be run live then you will need to collect new data. When doing so, you will need to also collect data from a ground truth device so that you can compare performance and generate scores. These new data files should be included in the algorithm repo.
 
@@ -67,6 +67,11 @@ When it comes to comparing data between two devices (a third-party and the Emoti
 * **Use the notes feature in the EmotiBit oscilloscope to input data straight into the EmotiBit data stream:** This method is very simple and accurate as each user note is given an EmotiBit timestamp in the EmotiBit's own `.csv` file. However, this approach is very limited by input speed since the user needs to input data manually (limiting frequency and number of data types able to be collected).
 * **Use an alignment procedure:** In utility category under `procedures`, there are different procedures designed for syncing data between the EmotiBit and other devices.
   * Alignment procedures should describe minimum hardware required for a the procedure to be possible on a third-party device (ex. accelerometer required for tapping procedure)
+
+## Running Algorithm on PC
+Many algorithms are able to be compiled into a Python module using `pybind`, enabling algorithms that run on the EmotiBit to be tested and iterated on a PC using pre-recorded data. This has several advantages such as faster development cycles and easy integration with other Python libraries to perform analysis and generate plots.
+
+For detailed instructions on how to build an algorithm for Python using pybind or setup pybind for an algorithm, refer to the `pybind_instructions.md` file.
 
 ## Naming Convention
 Each test procedure release contains data from the EmotiBit alongside ground-truth data from another device (ex. Cyton). The data files from the procedure are grouped together in a zip file, named as `<procedure-name_<vX.Y.Z>_<device>.zip`. For example, if EmotiBit data was recorded alongside Cyton data following the sit-stand-sit_v0.0.0 procedure, then the zip containing the data files in the release would be named `sit-stand-sit_v0.0.0_cyton.zip`.
