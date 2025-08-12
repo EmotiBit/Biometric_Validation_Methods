@@ -10,7 +10,7 @@ The following definitions apply to the scope of this repo along with all aspects
 - **Algorithm:** Code that takes in raw data (PPG, temperature, etc.) to calculate and output a derivative metric (SpO2, heartrate, etc.). 
 - **Procedure:** A standardized set of instructions detailing different actions/environments for the purpose of data collection. These are **non-device specific** (ex. sit-stand-sit) and are sorted under two categories:
   1) **Test** procedures involve human actions with the intention of altering biometric conditions for the use of algorithm validation (ex. running, holding breath).  
-  **Note:** The terms **test** and **test procedure** can be used interchangibly.
+  **Note:** The terms **test** and **test procedure** can be used interchangeably.
   2) **Utility** procedures can still involve human actions, but they are not designed to change a biometric signal such as temperature or heart rate.
 - **Dataset:** A collection of data files containing the data from the third-party device and the EmotiBit, usually grouped in a `.zip` archive.
 
@@ -24,17 +24,17 @@ To start, test your algorithm by using the data from a particular test procedure
 
 ```
 MyAwesomeAlgorithm/
-├── tests/
+├── tests/                              # Generated test results and plots
 │   └── sit-stand-sit_v0.0.0/
 │       └── <device>/
-│           ├── <device>_scatter.png
-│           ├── <device>_resampled.png
-│           ├── <device>_mean-diff.png
+│           ├── <device>_scatter.png    # Scatter plot comparison
+│           ├── <device>_resampled.png  # Time series comparison
+│           ├── <device>_mean-diff.png  # Blan-Altman plot
 │           └── ...
-├── src/
+├── src/                                # Algorithm source code
 │   ├── MyAwesomeAlgorithm.h
 │   └── MyAwesomeAlgorithm.cpp
-├── pybind/
+├── pybind/                             # Python binding files
 │   ├── build/
 │   │   └── ...
 │   ├── venv/
@@ -94,20 +94,17 @@ This ensures that data recorded at the same time on different devices using the 
 
 All procedures have their own version that can and does vary independently of other procedures. The structure for their version follows this pattern: ```X.Y.Z```
 
-The number in the ```X``` position denotes a change in the procedure that makes it [incompatible](#definition-of-compatibilitiy) with data collected using that The number in the ```X``` position denotes a change in the procedure that makes it [incompatible](#definition-of-compatibilitiy) with data collected using that The number in the ```X``` position denotes a change in the procedure that makes it [incompatible](#definition-of-compatibilitiy) with data collected using that The number in the ```X``` position denotes a change in the procedure that makes it [incompatible](#definition-of-compatibilitiy) with data collected using that procedure with a different ```X``` version. For example, version ```1.4.2``` is [compatible](#definition-of-compatibilitiy) with version ```1.6.1```, but not [compatible](#definition-of-compatibilitiy) with version ```0.2.5``` or version ```2.9.1```.
- with a different ```X``` version. For example, version ```1.4.2``` is [compatible](#definition-of-compatibilitiy) with version ```1.6.1```, but not [compatible](#definition-of-compatibilitiy) with version ```0.2.5``` or version ```2.9.1```.
- with a different ```X``` version. For example, version ```1.4.2``` is [compatible](#definition-of-compatibilitiy) with version ```1.6.1```, but not [compatible](#definition-of-compatibilitiy) with version ```0.2.5``` or version ```2.9.1```.
- with a different ```X``` version. For example, version ```1.4.2``` is [compatible](#definition-of-compatibilitiy) with version ```1.6.1```, but not [compatible](#definition-of-compatibilitiy) with version ```0.2.5``` or version ```2.9.1```.
+The number in the ```X``` position denotes a change in the procedure that makes it [incompatible](#definition-of-compatibility) with data collected using that procedure with a different ```X``` version. For example, version ```1.4.2``` is [compatible](#definition-of-compatibility) with version ```1.6.1```, but not [compatible](#definition-of-compatibility) with version ```0.2.5``` or version ```2.9.1```.
 
-The number in the ```Y``` position denotes a change to the procedure that was only made to support another device. The procedure structure has not changed, it has just had modifications made to indicate how to use another device with the procedure. procedures with different ```Y``` versions are still [compatible](#definition-of-compatibilitiy) with each other as long as they have the same ```X``` version. For example, version ```1.2.4``` is [compatible](#definition-of-compatibilitiy) with version ```1.3.4``` but not with version ```2.2.4```.
+The number in the ```Y``` position denotes a change to the procedure that was only made to support another device. The procedure structure has not changed, it has just had modifications made to indicate how to use another device with the procedure. procedures with different ```Y``` versions are still [compatible](#definition-of-compatibility) with each other as long as they have the same ```X``` version. For example, version ```1.2.4``` is [compatible](#definition-of-compatibility) with version ```1.3.4``` but not with version ```2.2.4```.
 
-The number in the ```Z``` position denotes a change that does not have any affect on the procedure, such as fixing a typo or updating a screenshot in the procedure. Procedures with different ```Z``` versions are still [compatible](#definition-of-compatibilitiy) with each other as long as they have the same ```X``` version. For example, version ```1.2.3``` is [compatible](#definition-of-compatibilitiy) with version ```1.2.4``` and version ```1.3.2``` but not with version ```2.2.3```.
+The number in the ```Z``` position denotes a change that does not have any affect on the procedure, such as fixing a typo or updating a screenshot in the procedure. Procedures with different ```Z``` versions are still [compatible](#definition-of-compatibility) with each other as long as they have the same ```X``` version. For example, version ```1.2.3``` is [compatible](#definition-of-compatibility) with version ```1.2.4``` and version ```1.3.2``` but not with version ```2.2.3```.
 
 Any changes that are in the "gray area" are immediately considered an incompatible change.
 
 For more information on the philosophy behind this versioning structure, see [semantic versioning.](https://semver.org/spec/v2.0.0.html)
 
-## Definition of Compatibilitiy
+## Definition of Compatibility
 
 The previous section references test procedures being "compatible" with each other several times. In this section, we define what it means for two test versions to be compatible.
 
