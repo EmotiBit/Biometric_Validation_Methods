@@ -32,6 +32,9 @@ PYBIND11_MODULE(EmotiBitPacket, m) {
 ## Requirements
 In order to configure an algorithm for pybind, a new directory name `pybind` should be created under the root directory. This directory will hold all files related to the C++ to Python process.
 
+In addition, [EmotiBit ArduinoFilters](https://github.com/EmotiBit/EmotiBit_ArduinoFilters) must be present in the Arduino libraries folder (from library manager or manual download) so that the ArduinoMock library can be found by CMake.
+- It is possible that ArduinoMock will be pulled out of ArduinoFilters in the future to a place such as the `pybind` directory of each algorithm, or into the Arduino libraries directory as its own library
+
 ### Setting up Python Virtual Environment
 - Open a new command prompt window
 - `cd` to the algorithm repository (ex. EmotiBit_Brainflow_SpO2_algorithm)
@@ -66,6 +69,7 @@ In order to configure an algorithm for pybind, a new directory name `pybind` sho
 
 ## Examples
 ### [EmotiBit_Brainflow_SpO2_Algorithm](https://github.com/EmotiBit/EmotiBit_Brainflow_SpO2_Algorithm)
+- Ensure [EmotiBit ArduinoFilters](https://github.com/EmotiBit/EmotiBit_ArduinoFilters) is present in the `Arduino/libraries` folder
 - Clone [EmotiBit_Brainflow_SpO2_Algorithm](https://github.com/EmotiBit/EmotiBit_Brainflow_SpO2_Algorithm) into `Arduino/libraries`
 - Follow the instructions [above](#build) on how to build the Python module
 - In a new window, navigate to one of the tests under the `tests` directory
