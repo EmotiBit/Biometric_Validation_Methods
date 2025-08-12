@@ -1,9 +1,9 @@
 # Porting an algorithm from C++ to Python
 
 ## Table of Contents
-- [Why?](#why?)
+- [Why?](#why)
 - [How it works](#how-it-works)
-- [Requirements](#Requirements)
+- [Requirements](#requirements)
 
 ## Why?
 The goal of this project is to allow users to take an algorithm written in C++ and translate it into runnable Python code.
@@ -41,8 +41,10 @@ In addition, [EmotiBit ArduinoFilters](https://github.com/EmotiBit/EmotiBit_Ardu
 - `cd` into the new `pybind` directory under the algorithm root folder
 - Run the following command `python -m venv venv`
   - This creates a new folder called `venv` containing the virtual Python environment
-- Activate the new environment by running the command `.\venv\Scripts\activate.bat`
-  - You will see the prompt in the terminal change. It now shows the Python environment in parenthesis.
+- Activate the new environment:
+  - Windows (cmd): `.\venv\Scripts\activate.bat`
+  - Windows (PowerShell): `.\venv\Scripts\Activate.ps1`
+  - macOS/Linux (bash/zsh): `source venv/bin/activate`
 - Run the following command to install pybind11. `pip install pybind11==2.13.5`
 
 ### Modify `bindings.cpp`
@@ -57,7 +59,7 @@ In addition, [EmotiBit ArduinoFilters](https://github.com/EmotiBit/EmotiBit_Ardu
 - Copy `CMakeLists.txt` into the algorithm `pybind` directory
 - Open the newly copied `CMakeLists.txt` in a text editor or IDE
 - Update any references to ALGORITHM_NAME with the name of the Algorithm
-  - The name put in `project` will also be the name of the Python module
+  - **Note:** The name put in `project` must match the name put in `PYBIND11_MODULE` in `bindings.cpp` and will also be the name of the Python module
 - Under the "Algorithm/pybind11 Setup" header comment, add all required `.cpp` and header directories in the locations designated by the comments
 
 ### Build
