@@ -42,7 +42,7 @@ target_include_directories(ArduinoMock PUBLIC
   "${ARDUINO_DIRECTORY}/libraries/EmotiBit_ArduinoFilters/mock/Libraries/Adafruit_SSD1306"
   "${ARDUINO_DIRECTORY}/libraries/EmotiBit_ArduinoFilters/mock/Libraries/Encoder"
 )
-target_link_libraries(ArduinoMock PUBLIC GTest::gmock_main GTest::gmock GTest::gtest_main GTest::gtest) 
+target_link_libraries(ArduinoMock PRIVATE GTest::gmock_main GTest::gmock GTest::gtest_main GTest::gtest) 
 
 # ----------------------------------------------------------------------------------------------------------
 # Algorithm/pybind11 Setup
