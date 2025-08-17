@@ -3,7 +3,7 @@ Procedure for recording data under the environment of apnea with an unobstructed
 
 ⚠️ **THIS PROCEDURE INVOLVES PURPOSEFUL APNEA. IF YOU START TO FEEL LIGHTHEADED OR SpO2 DROPS BELOW 90%, PLEASE DISCONTINUE THE PROCEDURE** ⚠️
 
-## Procedure
+## Instructions
 1) Sit with back straight
 2) Breathe normally for 3 minutes
 3) Hold breath for 15 seconds after an inhale

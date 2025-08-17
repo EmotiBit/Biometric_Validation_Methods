@@ -3,7 +3,7 @@ Procedure for recording data under the environment of a period of walking follow
 
 **Note:** Depending on the algorithm and placement of the device/EmotiBit, the physical nature of this test may lead to inaccurate data due to jostling of the sensors.
 
-## Procedure
+## Instructions
 1) Walk at a comfortable pace for 3 minutes
 2) Run at a moderate pace for 6 minutes
 3) Walk for another 3 minutes
