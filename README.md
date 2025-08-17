@@ -18,11 +18,11 @@ The following definitions apply to the scope of this repo along with all aspects
 **Note on datasets:** As a general rule, files that come out of the same `.zip` file can be directly compared with each other since they are from the same "run" of the procedure. However, if a procedure contains several different datasets under the same release, then files from different datasets cannot be directly compared since it is very likely that they come from different "runs" of the procedure.
 
 ## Using this repository
-### I want to test a new **algorithm**
-To start, test your algorithm by using the data from a particular procedure release (ex. [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)). From there, generate scores for how well it performs on the EmotiBit data when compared to a third-party "ground-truth" device (also provided in the procedure release) using `scorer.py` in the EmotiBit Biometric Lib repository (refer to this [example](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/dev/py/examples/scorer_example) for instructions on how to use `scorer.py`). 
+### I want to evaluate a new **algorithm**
+To start, run your algorithm using the EmotiBit data from a particular procedure release (ex. [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)). From there, generate scores for how well it performs on the EmotiBit data when compared to a third-party "ground-truth" device (also provided in the procedure release) using `scorer.py` in the EmotiBit Biometric Lib repository (refer to this [example](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/dev/py/examples/scorer_example) for instructions on how to use `scorer.py`). 
 
 `scorer.py` will generate plots comparing the EmotiBit data to the ground-truth data to visualize and quantify the algorithm's performance. Put these plots in the appropriate subdirectories of the `tests` folder along with showing them in the README of your algorithm (refer to this [SpO2 algorithm](https://github.com/EmotiBit/EmotiBit_Brainflow_SpO2_Algorithm)).
-- As mentioned before, the release for a procedure includes the data files that were recorded when that test was created/last updated. If your algorithm is able to calculate the metric post-hoc, then you can use these raw data files to calculate your metric (ex. using [Python](#running-algorithms-on-a-pc) to run the algorithm).
+- As mentioned before, the release for a procedure includes the data files that were recorded when that procedure was created/last updated. If your algorithm is able to calculate the metric post-hoc, then you can use these raw data files to calculate your metric (ex. using [Python](#running-algorithms-on-a-pc) to run the algorithm).
 - If your algorithm must be run live then you will need to collect new data. When doing so, you will need to also collect data from a ground truth device so that you can compare performance and generate scores. These new data files should be included in the algorithm repo.
 
 ### I want to add new **instructions**
@@ -39,9 +39,9 @@ In addition, if there are device-specific instructions that need to be followed 
 
 ## Synchronization
 When it comes to comparing data between two devices (a third-party and the EmotiBit), proper synchronization is imperative for accurate results. This responsibility mainly rests on whoever is recording new datasets. Different methods for accurate synchronization are mentioned below:
-* **Use the notes feature in the EmotiBit oscilloscope to input data straight into the EmotiBit data stream:** This method is very simple and temporally accurate as each user note is given an EmotiBit timestamp in the EmotiBit's own `.csv` file. However, this approach is very limited by input speed since the user needs to input data manually (limiting frequency and number of data types able to be collected).
-* **Use an alignment procedure:** In utility category under `instructions`, there are different procedures designed for syncing data between the EmotiBit and other devices.
-  * Alignment procedures should describe minimum hardware required for a the procedure to be possible on a third-party device (ex. accelerometer required for tapping procedure)
+- **Use the notes feature in the EmotiBit oscilloscope to input data straight into the EmotiBit data stream:** This method is simple and temporally accurate as each user note is given an EmotiBit timestamp in the EmotiBit `.csv` file. However, this approach is limited by input speed since the user needs to input data manually (limiting frequency and number of data types)
+- **Use an alignment procedure:** In the utility category under `instructions`, there are procedures designed for syncing data between the EmotiBit and other devices
+  - Alignment procedures should describe the minimum hardware required for the procedure to be possible on a third-party device (e.g., an accelerometer required for the tapping procedure)
 
 ## Running algorithms on a PC
 Many algorithms are able to be compiled into a Python module using `pybind`, enabling algorithms that run on the EmotiBit to be tested and iterated on a PC using pre-recorded data. This has several advantages such as faster development cycles and easy integration with other Python libraries to perform analysis and generate plots.
@@ -80,8 +80,8 @@ For more information on the philosophy behind this versioning structure, see [se
 
 ## Definition of Compatibility
 **Important:** If two procedures are compatible, it does not imply that the data from these procedures is from the same data session.
-- In order to generate plots between two files using `scorer.py`, they need to from the same recording session 
-- If two procedures are compatible then the plots can be compared against each other 
+- To generate plots between two files using `scorer.py`, they need to be from the same recording session
+- If two procedures are compatible, then the plots can be compared against each other
 
 For example, if you have the following data:
 1. EmotiBit and Cyton file recorded with `v1.2.4`
@@ -89,7 +89,7 @@ For example, if you have the following data:
 1. EmotiBit and Cyton file recorded with `v2.2.1`
 1. EmotiBit and Muse file recorded with `v2.2.1` *(from a different recording session than the Cyton file)*
 
-The files in 1 can be directly compared with each other and plots can be generated between the two files, as they are from the recording session. The same applies for 2, 3, and 4.
+The files in 1 can be directly compared with each other and plots can be generated between the two files, as they are from the same recording session. The same applies for 2, 3, and 4.
 
 In addition, you can compare the plots generated in 1 to the plots generated in 2, but the plots from 1 and 2 cannot be compared to the plots from either 3 or 4. 
 
