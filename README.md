@@ -15,7 +15,7 @@ The following definitions apply to the scope of this repo along with all aspects
   - **Utility** instructions contain steps for supporting tasks such as data synchronization, calibration, or other auxiliary operations needed during testing.
 - **Dataset:** A collection of data files containing the data from the third-party device and the EmotiBit, usually grouped in a `.zip` archive.
 
-**Note on datasets:** As a general rule, files that comes out of the same `.zip` file can be directly compared with each other since they are from the same "run" of the test procedure. However, if a test procedure contains several different datasets under the same release, then files from different datasets cannot be directly compared since it is very likely that they come from different "runs" of the test.
+**Note on datasets:** As a general rule, files that come out of the same `.zip` file can be directly compared with each other since they are from the same "run" of the procedure. However, if a procedure contains several different datasets under the same release, then files from different datasets cannot be directly compared since it is very likely that they come from different "runs" of the procedure.
 
 ## Using this repository
 ### I want to test a new **algorithm**
