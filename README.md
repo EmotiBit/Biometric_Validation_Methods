@@ -7,13 +7,13 @@ The goal is to standardize methods used for scoring the accuracy of algorithms t
 
 ## Definitions
 The following definitions apply to the scope of this repo along with all aspects of the general EmotiBit algorithm methodology.
-- **Algorithm:** Code that takes in raw data (PPG, temperature, etc.) to calculate and output a derivative metric (SpO2, heartrate, etc.). 
+- **Algorithm:** Code that takes in raw data (PPG, temperature, etc.) to calculate and output a derivative metric (SpO2, heart rate, etc.)
   - A derivative metric from an algorithm can then be used as input for another algorithm
 - **Instructions:** There are three different types of instructions:
   - **Device** instructions contain data collection instructions for a specific device
   - **Procedure** instructions contain steps with the goal of manipulating biometric signals
   - **Utility** instructions contain steps for supporting tasks such as data synchronization, calibration, or other auxiliary operations needed during testing.
-- **Dataset:** A collection of data files containing the data from the third-party device and the EmotiBit, usually grouped in a `.zip` archive.
+- **Dataset:** A collection of data files containing the data from the third-party device and the EmotiBit, usually grouped in a `.zip` archive
 
 **Note on datasets:** As a general rule, files that come out of the same `.zip` file can be directly compared with each other since they are from the same "run" of the procedure. However, if a procedure contains several different datasets under the same release, then files from different datasets cannot be directly compared since it is very likely that they come from different "runs" of the procedure.
 
@@ -52,7 +52,7 @@ For detailed instructions on how to build an algorithm for Python using pybind o
 Each procedure release contains data from the EmotiBit alongside ground-truth data from another device (ex. Cyton). The data files from the procedure are grouped together in a zip file, named as `<procedure-name>_v<X.Y.Z>_<device>.zip`. For example, if EmotiBit data was recorded alongside Cyton data following the sit-stand-sit_v0.0.0 procedure, then the `.zip` containing the data files in the release would be named `sit-stand-sit_v0.0.0_cyton.zip`.
 
 The structure of the `.zip` archive should resemble the following (as an example):
-```
+```text
 sit-stand-sit_v0.0.0_cyton.zip/
 ├── emotibit-data/
 │   └── EmotiBit.csv
