@@ -18,9 +18,9 @@ The following definitions apply to the scope of this repo along with all aspects
 - **Algorithm:** Code that takes in raw data (PPG, temperature, etc.) to calculate and output a derivative metric (SpO2, heart rate, etc.)
   - A derivative metric from an algorithm can then be used as input for another algorithm
 - **Test:** Steps that manipulate biometric signals under specific conditions (e.g., sit-stand-sit, hold-breath)
-- **Device Protocol:** Data collection steps for a specific device
-- **Utility Protocol:** Supporting tasks such as data synchronization, calibration, or other auxiliary operations needed during testing
 - **Ground-Truth Device:** A reference device used to provide accurate measurements for comparison against EmotiBit algorithm outputs
+- **Device Protocol:** Steps that describe how to collect data from a ground-truth device
+- **Utility Protocol:** Supporting tasks such as data synchronization, calibration, or other auxiliary operations needed during testing
 - **Run:** A single execution of a test where data is recorded simultaneously from EmotiBit and a ground-truth device
 - **Dataset:** A collection of data files from one run, usually grouped in a `.zip` archive (refer to [naming convention](#naming-convention) for file structure)
 
