@@ -41,12 +41,14 @@ The following definitions apply to the scope of this repo along with all aspects
 ### I want to add a new test
 These instructions define a new test, that will be used to benchmark algorithms.
 New instructions are added by having the newly created markdown file (containing description, steps, etc.) added to this repository. Refer to any of the existing instructions for examples of what to include for each category of instructions.
-- See [tests/](./tests/)
+- See [tests](./tests/)
+
 TODO: Add more details
 
 ### I want to add a new ground-truth device
 These instructions define the steps to record data from a ground-truth device.
 - See [device-protocols](./device-protocols/)
+
 TODO: Add more details
 
 ### I want to add a new **dataset** (for an existing test)
