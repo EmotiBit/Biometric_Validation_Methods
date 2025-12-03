@@ -2,9 +2,14 @@
 
 Welcome to the EmotiBit Biometric Validation Methods repository!
 
-Here, you can find the methodology, structure, and instructions for testing biometric algorithms. In addition, you can find data files for every version of procedure instructions that we release. Each procedure instructions release contains the EmotiBit data alongside the ground-truth data (from another device) so that an EmotiBit algorithm can be compared with other EmotiBit algorithms and/or other devices.
+The goal is to standardize methods used for scoring the accuracy of algorithms that detect biometric signals. 
+This repository provides standardized methods for validating biometric algorithms across different conditions (sitting, standing, running, etc.).
 
-The goal is to standardize methods used for scoring the accuracy of algorithms that detect biometric signals. Different conditions (i.e. sitting still, standing, running) can cause problems for algorithms that detect biometric signals, so these methodologies are meant to be able to standardize the way we check accuracy in different environments.
+## What you can do with this repository
+
+1. **Test your algorithm** - Evaluate algorithm performance using provided datasets 
+2. **Add a new test** - Create new test procedures that will be used to evaluate algorithms
+3. **Add a new dataset** - Add new datasets for existing tests for new devices
 
 ## Definitions
 
@@ -12,36 +17,39 @@ The following definitions apply to the scope of this repo along with all aspects
 
 - **Algorithm:** Code that takes in raw data (PPG, temperature, etc.) to calculate and output a derivative metric (SpO2, heart rate, etc.)
   - A derivative metric from an algorithm can then be used as input for another algorithm
-- **Instructions:** There are three different types of instructions:
-  - **Device** instructions contain data collection instructions for a specific device
-  - **Procedure** instructions contain steps with the goal of manipulating biometric signals
-  - **Utility** instructions contain steps for supporting tasks such as data synchronization, calibration, or other auxiliary operations needed during testing.
-- **Dataset:** A collection of data files containing the data from the third-party device and the EmotiBit, usually grouped in a `.zip` archive (refer to [naming convention](#naming-convention) for file structure)
+- **Test:** Steps that manipulate biometric signals under specific conditions (e.g., sit-stand-sit, hold-breath)
+- **Device Protocol:** Data collection steps for a specific device
+- **Utility Protocol:** Supporting tasks such as data synchronization, calibration, or other auxiliary operations needed during testing
+- **Ground-Truth Device:** A reference device used to provide accurate measurements for comparison against EmotiBit algorithm outputs
+- **Run:** A single execution of a test where data is recorded simultaneously from EmotiBit and a ground-truth device
+- **Dataset:** A collection of data files from one run, usually grouped in a `.zip` archive (refer to [naming convention](#naming-convention) for file structure)
 
-**Note on datasets:** As a general rule, files that come out of the same `.zip` file can be directly compared with each other since they are from the same "run" of the procedure. However, if a procedure contains several different datasets under the same release, then files from different datasets cannot be directly compared since it is very likely that they come from different "runs" of the procedure.
+**Note on datasets:** Files within the same dataset can be directly compared since they were recorded simultaneously. Files from different datasets cannot be directly compared, even if from the same test release, since they come from different runs.
 
 ## Using this repository
 
 ### I want to evaluate a new **algorithm**
 
-To start, run your algorithm using the EmotiBit data from a particular procedure release (ex. [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0)). From there, generate scores for how well it performs on the EmotiBit data when compared to a third-party "ground-truth" device (also provided in the procedure release) using `scorer.py` in the EmotiBit Biometric Lib repository (refer to this [example](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/dev/py/examples/scorer_example) for instructions on how to use `scorer.py`).
+1. Download a dataset from a test release (e.g., [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0))
+2. Run your algorithm on the EmotiBit data from the dataset
+3. Use [`scorer.py`](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/dev/py/examples/scorer_example) to compare your algorithm output against the ground-truth device data
+  - `scorer.py` will generate plots comparing the EmotiBit data to the ground-truth data to visualize and quantify the algorithm's performance.
+4. Review the generated plots and scores
 
-`scorer.py` will generate plots comparing the EmotiBit data to the ground-truth data to visualize and quantify the algorithm's performance. Put these plots and the raw data in the appropriate subdirectories of the `tests` folder along with showing them in the README of your algorithm (refer to this [SpO2 algorithm](https://github.com/EmotiBit/EmotiBit_Brainflow_SpO2_Algorithm)).
+- Note: This process is designed for algorithms that can run post-hoc, thus leveraging the raw data collected, at the time of creation of the **release**. If your algorithm must be run live then you will need to collect new data. When doing so, you will need to also collect data from a ground truth device so that you can compare performance and generate scores.
 
-- As mentioned before, the release for a procedure includes the data files that were recorded when that procedure was created/last updated. If your algorithm is able to calculate the metric post-hoc, then you can use these raw data files to calculate your metric (ex. using [Python](#running-algorithms-on-a-pc) to run the algorithm).
-- If your algorithm must be run live then you will need to collect new data. When doing so, you will need to also collect data from a ground truth device so that you can compare performance and generate scores. These new data files should be included in the algorithm repo in the appropriate directory under `tests`.
-
-### I want to add new **instructions**
-
+### I want to add a new test
+These instructions define a new test, that will be used to benchmark algorithms.
 New instructions are added by having the newly created markdown file (containing description, steps, etc.) added to this repository. Refer to any of the existing instructions for examples of what to include for each category of instructions.
 
-To properly version instructions, use the [versioning structure.](#versioning-structure)
+TODO: Add more details
 
-### I want to add a new **dataset**
+### I want to add a new ground-truth device
+These instructions define the steps to record data from a ground-truth device.
+TODO: Add more details
 
-To add data from a new device to an existing procedure, follow the selected procedure instructions (as well as other device/utility instructions needed for synchronization, etc.) while recording data from the EmotiBit and the new device. Put the files in a directory together named following the [naming convention](#naming-convention) below so that they can be added to the release for that specific version of the procedure.
-
-In addition, if there are new device-specific instructions that need to be followed for data collection, create a PR to add the new device instruction file to this repo.
+### I want to add a new **dataset** (for an existing test)
+Combine the instructions for (1) how to record data from a ground-truth device and (2) steps to perform a test. Put the files in a directory together named following the [naming convention](#naming-convention) below so that they can be added to the release for that specific version of the procedure.
 
 **Note:** If you have the capability to record more than one third-party device at the same time alongside the EmotiBit, it is recommended to create a `.zip` archive for each device-EmotiBit pairing. For example, if you record data from `hr-sensor`, `spo2-sensor`, and from the EmotiBit when following one procedure, then the `hr-sensor` should have its own archive w/ EmotiBit data, and the `spo2-sensor` should also have its own archive as well.
 
@@ -50,8 +58,7 @@ In addition, if there are new device-specific instructions that need to be follo
 When it comes to comparing data between two devices (a third-party and the EmotiBit), proper synchronization is imperative for accurate results. This responsibility mainly rests on whoever is recording new datasets. Different methods for accurate synchronization are mentioned below:
 
 - **Use the notes feature in the EmotiBit oscilloscope to input data straight into the EmotiBit data stream:** This method is simple and temporally accurate as each user note is given an EmotiBit timestamp in the EmotiBit `.csv` file. However, this approach is limited by input speed since the user needs to input data manually (limiting frequency and number of data types)
-- **Use an alignment procedure:** In the utility category under `instructions`, there are procedures designed for syncing data between the EmotiBit and other devices
-  - Alignment procedures should describe the minimum hardware required for the procedure to be possible on a third-party device (e.g., an accelerometer required for the tapping procedure)
+- **Use an alignment procedure:** Check out the "tapping prcedure" under "utility-protocols".
 
 ## Running algorithms on a PC
 
