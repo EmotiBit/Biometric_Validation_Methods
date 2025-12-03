@@ -32,7 +32,7 @@ The following definitions apply to the scope of this repo along with all aspects
 
 1. Download a dataset from a test release (e.g., [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0))
 2. Run your algorithm on the EmotiBit data from the dataset
-3. Use [`scorer.py`](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/dev/py/examples/scorer_example) to compare your algorithm output against the ground-truth device data
+3. Use [`scorer.py`](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/blob/a82244efcccb6512258c802b8eebd2d1895d8990/py/src/emotibit/scorer.py#L2) to compare your algorithm output against the ground-truth device data
   - `scorer.py` will generate plots comparing the EmotiBit data to the ground-truth data to visualize and quantify the algorithm's performance.
 4. Review the generated plots and scores
 
@@ -41,11 +41,12 @@ The following definitions apply to the scope of this repo along with all aspects
 ### I want to add a new test
 These instructions define a new test, that will be used to benchmark algorithms.
 New instructions are added by having the newly created markdown file (containing description, steps, etc.) added to this repository. Refer to any of the existing instructions for examples of what to include for each category of instructions.
-
+- See [tests/](./tests/)
 TODO: Add more details
 
 ### I want to add a new ground-truth device
 These instructions define the steps to record data from a ground-truth device.
+- See [device-protocols](./device-protocols/)
 TODO: Add more details
 
 ### I want to add a new **dataset** (for an existing test)
@@ -58,7 +59,7 @@ Combine the instructions for (1) how to record data from a ground-truth device a
 When it comes to comparing data between two devices (a third-party and the EmotiBit), proper synchronization is imperative for accurate results. This responsibility mainly rests on whoever is recording new datasets. Different methods for accurate synchronization are mentioned below:
 
 - **Use the notes feature in the EmotiBit oscilloscope to input data straight into the EmotiBit data stream:** This method is simple and temporally accurate as each user note is given an EmotiBit timestamp in the EmotiBit `.csv` file. However, this approach is limited by input speed since the user needs to input data manually (limiting frequency and number of data types)
-- **Use an alignment procedure:** Check out the "tapping prcedure" under "utility-protocols".
+- **Use an alignment procedure:** Check out the ["tapping prcedure"](./utility-protocols/tapping-procedure_v0.0.0.md) under "utility-protocols".
 
 ## Running algorithms on a PC
 
