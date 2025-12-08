@@ -8,7 +8,7 @@ This repository provides standardized methods for validating biometric algorithm
 ## What you can do with this repository
 
 1. **Test your algorithm** - Evaluate algorithm performance using provided datasets 
-2. **Add a new test** - Create new test procedures that will be used to evaluate algorithms
+2. **Add a new test** - Create a new test that will be used to evaluate algorithms
 3. **Add a new dataset** - Add new datasets for existing tests for new devices
 
 ## Definitions
@@ -33,10 +33,10 @@ The following definitions apply to the scope of this repo along with all aspects
 1. Download a dataset from a test release (e.g., [sit-stand-sit_v0.0.0](https://github.com/EmotiBit/Biometric_Validation_Methods/releases/tag/sit-stand-sit_v0.0.0))
 2. Run your algorithm on the EmotiBit data from the dataset
 3. Use [`scorer.py`](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/blob/a82244efcccb6512258c802b8eebd2d1895d8990/py/src/emotibit/scorer.py#L2) to compare your algorithm output against the ground-truth device data
-  - `scorer.py` will generate plots comparing the EmotiBit data to the ground-truth data to visualize and quantify the algorithm's performance.
+    - `scorer.py` will generate plots comparing the EmotiBit data to the ground-truth data to visualize and quantify the algorithm's performance.
 4. Review the generated plots and scores
 
-- Note: This process is designed for algorithms that can run post-hoc, thus leveraging the raw data collected, at the time of creation of the **release**. If your algorithm must be run live then you will need to collect new data. When doing so, you will need to also collect data from a ground truth device so that you can compare performance and generate scores.
+**Note**: *This process is designed for algorithms that can run post-hoc, thus leveraging the raw data collected, at the time of creation of the **release**. If your algorithm must be run live then you will need to collect new data. When doing so, you will need to also collect data from a ground truth device so that you can compare performance and generate scores.*
 
 ### I want to add a new test
 These instructions define a new test, that will be used to benchmark algorithms.
