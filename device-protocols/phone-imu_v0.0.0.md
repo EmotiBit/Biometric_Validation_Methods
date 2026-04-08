@@ -5,7 +5,6 @@ A smartphone used to record raw IMU data (accelerometer + gyroscope) for sit-sta
 - Smartphone with accelerometer and gyroscope
 - IMU recording app capable of:
   - Recording accelerometer and gyroscope simultaneously
-  - Sampling at **100 Hz**
   - Exporting data as CSV with a timestamp column
 
 ## Placement
@@ -15,7 +14,6 @@ A smartphone used to record raw IMU data (accelerometer + gyroscope) for sit-sta
 
 ## Data Collection Instructions
 1. Open your IMU recording app and configure:
-   - Sampling rate: **100 Hz**
    - Sensors: **accelerometer** and **gyroscope**
 2. Place the phone flat on a table.
 3. Begin recording.
@@ -36,5 +34,3 @@ timestamp,accel_x,accel_y,accel_z,gyro_x,gyro_y,gyro_z
 0.010,0.011,-0.004,9.810,0.001,-0.001,0.000
 ...
 ```
-
-**Note:** Column names may vary by app. Document the exact column names used when preparing your dataset so that downstream tooling can correctly identify each signal.

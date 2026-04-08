@@ -13,7 +13,7 @@ Procedure for recording labeled sit-to-stand and stand-to-sit transitions inters
 - **Environment:** Quiet, flat ground, minimal external disturbances
 
 ## Instructions
-1. Start IMU recording (100 Hz).
+1. Start IMU recording.
 2. Place phone on a table — remain still for the first **10 seconds**.
 3. At ~10s: pick up phone and insert into pocket (correct orientation) while standing.
 4. Stand still until **15 seconds**.
