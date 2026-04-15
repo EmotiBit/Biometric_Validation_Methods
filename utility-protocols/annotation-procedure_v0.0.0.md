@@ -21,7 +21,7 @@ Each dataset must be accompanied by a JSON annotation file with the following st
 }
 ```
 
-### Valid Labels
+### Example Labels
 
 | Label | Description |
 |---|---|
@@ -33,7 +33,6 @@ Each dataset must be accompanied by a JSON annotation file with the following st
 
 ### Guidelines
 - `start_time` and `end_time` are in **seconds** from the start of the recording.
-- Intervals should be **contiguous** — the `end_time` of one state should equal the `start_time` of the next.
 - The annotation does not need to cover the full recording. Unlabeled periods (e.g., phone still on the table) can be omitted.
 - For noise injection scenarios (see [sit-stand-noisy_v0.0.0](../tests/sit-stand-noisy_v0.0.0.md)), do **not** create separate labels for noise movements. Instead, describe them in the `description` field.
 
@@ -43,7 +42,7 @@ Each dataset must be accompanied by a JSON annotation file with the following st
 3. **Fill in the `description` field** with a brief summary of the session, including the scenario name, subject conditions, and any notable deviations from the procedure.
 4. **Add a state entry for each labeled interval** in chronological order. Use the timings recorded in step 1.
 5. **Review** the annotation file to confirm:
-   - All transitions are labeled
+   - All states are labeled
    - Times are in seconds and match the recording
    - No overlapping intervals exist
 6. **Include the annotation file** in the dataset `.zip` archive alongside the IMU data.

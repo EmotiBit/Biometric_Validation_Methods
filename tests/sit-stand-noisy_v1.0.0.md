@@ -8,8 +8,7 @@ Procedure for recording labeled sit-to-stand and stand-to-sit transitions with i
 - Flat ground
 
 ## Global Constants
-- **Recording Duration:** 135 seconds
-- **Phone Placement:** Front pants pocket, camera facing inward toward the leg, phone oriented toward the bottom of the pocket
+- **Phone Placement:** Front pants pocket, camera facing inward toward the leg, camera end pointing toward the bottom of the pocket
 - **Environment:** Quiet, flat ground, minimal external disturbances
 
 ## Noise Types
@@ -28,23 +27,21 @@ Procedure for recording labeled sit-to-stand and stand-to-sit transitions with i
 
 ## Instructions
 1. Start IMU recording.
-2. Place phone on a table — remain still for the first **10 seconds**.
-3. At ~10s: pick up phone and insert into pocket (correct orientation) while standing.
-4. Stand still until **15 seconds**.
-5. Follow the sequence below, varying the noise type each cycle:
+2. Place phone on a table — remain still for at least **10 seconds** to establish a still baseline.
+3. Pick up phone and insert into pocket (correct orientation) while standing.
+4. Stand still for at least **10 seconds** to establish an on-body baseline.
+5. Follow the sequence below, varying the noise type each cycle. Each sit and stand transition should be normal pace (~1.5 seconds). Remain in each position for at least **10 seconds**, performing noise movements naturally during stable periods:
 
-| Cycle | Sit at | Noise while sitting | Stand at | Noise while standing |
-|---|---|---|---|---|
-| 1 | 15s | Lean forward/backward, reposition | 30s | Shift weight, bend forward |
-| 2 | 45s | Reposition, leg jitter | 60s | Bend forward, rotate in place |
-| 3 | 75s | Leg jitter, partial stand attempts | 90s | Shift weight, rotate in place |
-| 4 | 105s | Lean sideways, partial stand attempts | 120s | All standing noise types |
+| Cycle | Noise while sitting | Noise while standing |
+|---|---|---|
+| 1 | Lean forward/backward, reposition | Shift weight, bend forward |
+| 2 | Reposition, leg jitter | Bend forward, rotate in place |
+| 3 | Leg jitter, partial stand attempts | Shift weight, rotate in place |
+| 4 | Lean sideways, partial stand attempts | All standing noise types |
 
-- Each sit and stand transition should be normal pace (~1.5 seconds).
-- Perform noise movements naturally during the stable sit/stand periods between transitions.
-
-6. Stop recording at 135 seconds.
-7. Annotate the dataset following the [annotation procedure](../utility-protocols/annotation-procedure_v0.0.0.md).
+6. Remain standing for at least **10 seconds** after the final transition.
+7. Stop recording.
+8. Annotate the dataset following the [annotation procedure](../utility-protocols/annotation-procedure_v0.0.0.md).
 
 ## Expected Annotations
 Label all transitions (`sit_to_stand`, `stand_to_sit`) and stable periods (`sit`, `stand`). Do **not** label individual noise movements as separate states — noise occurs within a `sit` or `stand` interval and should be noted in the dataset description field of the annotation JSON rather than as separate labeled states.

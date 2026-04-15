@@ -8,31 +8,22 @@ Procedure for recording labeled sit-to-stand and stand-to-sit transitions inters
 - Flat ground with enough space to walk ~5–10 steps
 
 ## Global Constants
-- **Recording Duration:** 135 seconds
-- **Phone Placement:** Front pants pocket, camera facing inward toward the leg, phone oriented toward the bottom of the pocket
+- **Phone Placement:** Front pants pocket, camera facing inward toward the leg, camera end pointing toward the bottom of the pocket
 - **Environment:** Quiet, flat ground, minimal external disturbances
 
 ## Instructions
 1. Start IMU recording.
-2. Place phone on a table — remain still for the first **10 seconds**.
-3. At ~10s: pick up phone and insert into pocket (correct orientation) while standing.
-4. Stand still until **15 seconds**.
-5. Follow the sequence below, repeating it 4 times across the recording:
-
-| Time (1st cycle) | Action |
-|---|---|
-| 15s | Sit down (~1.5s), remain seated |
-| 30s | Stand up (~1.5s), remain standing |
-| 35s | Walk at a normal pace for ~5 seconds |
-| 40s | Stop and stand still |
-
-Repeat at:
-- (45s, 60s, 65s, 70s)
-- (75s, 90s, 95s, 100s)
-- (105s, 120s, 125s, 130s)
-
-6. Stop recording at 135 seconds.
-7. Annotate the dataset following the [annotation procedure](../utility-protocols/annotation-procedure_v0.0.0.md).
+2. Place phone on a table — remain still for at least **10 seconds** to establish a still baseline.
+3. Pick up phone and insert into pocket (correct orientation) while standing.
+4. Stand still for at least **10 seconds** to establish an on-body baseline.
+5. Follow the sequence below, repeating it at least **4 times** to capture statistical variation:
+   - Sit down (~1.5s), remain seated for at least **10 seconds**.
+   - Stand up (~1.5s), remain standing briefly.
+   - Walk at a normal pace for ~5 seconds.
+   - Stop and stand still briefly.
+6. Remain standing for at least **10 seconds** after the final cycle.
+7. Stop recording.
+8. Annotate the dataset following the [annotation procedure](../utility-protocols/annotation-procedure_v0.0.0.md).
 
 ## Expected Annotations
 Label all six activity types: `sit`, `stand`, `sit_to_stand`, `stand_to_sit`, and `walk`. Walking segments should be clearly labeled so that they can be distinguished from sit/stand transitions during algorithm evaluation.

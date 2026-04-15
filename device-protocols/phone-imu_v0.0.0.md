@@ -7,24 +7,6 @@ A smartphone used to record raw IMU data (accelerometer + gyroscope) for sit-sta
   - Recording accelerometer and gyroscope simultaneously
   - Exporting data as CSV with a timestamp column
 
-## Placement
-- **Pocket:** Front pants pocket
-- **Orientation:** Camera facing inward toward the leg, phone oriented toward the bottom of the pocket (top of phone pointing down)
-- **Initialization:** Start recording with the phone on a table, then insert into pocket at ~10 seconds while standing
-
-## Data Collection Instructions
-1. Open your IMU recording app and configure:
-   - Sensors: **accelerometer** and **gyroscope**
-2. Place the phone flat on a table.
-3. Begin recording.
-4. At ~10 seconds, pick up the phone and insert it into your front pants pocket with the correct orientation (see Placement above).
-5. Follow the test procedure.
-6. When the procedure is complete, stop recording.
-7. Export the recorded data as a CSV file. Ensure the file contains:
-   - A timestamp column (in seconds)
-   - Accelerometer columns (x, y, z)
-   - Gyroscope columns (x, y, z)
-
 ## Output Format
 The exported CSV should resemble the following structure:
 
